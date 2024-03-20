@@ -18,9 +18,9 @@ public class EstacionamentoController {
     private EstacionamentoService estacionamentoService;
 
     @PostMapping
-    public ResponseEntity<Estacionamento> adicionar(@RequestBody Estacionamento estacionamento){
-        Estacionamento result = estacionamentoService.adicionar(estacionamento);
-        return ResponseEntity.status(HttpStatus.CREATED).body(result);
+    public ResponseEntity<Void> adicionar(@RequestBody Estacionamento estacionamento){
+        estacionamentoService.adicionar(estacionamento);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     
 }
