@@ -16,14 +16,8 @@ public class EstacionamentoService{
     private DataValidador dataValidador;
 
     public void adicionar(Estacionamento estacionamento){
-        
-        boolean validarData = dataValidador.isEndDateAfterStartDate(estacionamento.getDataEntrada(), estacionamento.getDataSaida());
-
-        if (validarData == true){
-            throw new RuntimeException("Deu merda");
-        }
-        
+        dataValidador.isEndDateAfterStartDate(estacionamento.getDataEntrada(), estacionamento.getDataSaida());
         estacionamentoRepository.save(estacionamento);
     }
-    
+
 }
