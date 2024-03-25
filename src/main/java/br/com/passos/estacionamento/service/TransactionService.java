@@ -2,6 +2,7 @@ package br.com.passos.estacionamento.service;
 
 import br.com.passos.estacionamento.model.Vacancy;
 import br.com.passos.estacionamento.repository.VacancyRepository;
+import br.com.passos.estacionamento.service.useCase.DailyCalculation;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,9 +23,16 @@ public class TransactionService {
     @Autowired
     private DateValidator dateValidator;
 
-    @Transactional
+    @Autowired
+    private DailyCalculation dailyCalculation;
+
+
     public void createTransaction(Transaction transaction){
         dateValidator.isEndDateAfterStartDate(transaction.getDateInput(), transaction.getDateOutput());
+
+        double valueDate = dailyCalculation.calculation(transaction.getDateInput(), transaction.getDateOutput(), transaction.getValueDate());
+        transaction.setValueTotal(valueDate);
+
         transactionRepository.save(transaction);
         activeVacancy(transaction.getId());
     }

@@ -30,6 +30,8 @@ public class Transaction {
 
     private LocalDateTime dateOutput;
 
-    private Double valueHour;
+    private Double valueDate;
+
+    private Double valueTotal;
     
 }
