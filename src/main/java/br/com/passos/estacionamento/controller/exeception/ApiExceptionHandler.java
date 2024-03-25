@@ -1,6 +1,6 @@
 package br.com.passos.estacionamento.controller.exeception;
 
-import br.com.passos.estacionamento.service.exception.DataInvalidaException;
+import br.com.passos.estacionamento.service.exception.DateValidatorException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ApiExceptionHandler {
 
-    @ExceptionHandler(DataInvalidaException.class)
-    public ResponseEntity<ErrorMessage> dataInvalidaException(
+    @ExceptionHandler(DateValidatorException.class)
+    public ResponseEntity<ErrorMessage> dateValidatorException(
             RuntimeException ex, HttpServletRequest request) {
         log.error("Api Error - ", ex);
         return ResponseEntity

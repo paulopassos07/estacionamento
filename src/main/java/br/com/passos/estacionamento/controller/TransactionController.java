@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.passos.estacionamento.domain.Estacionamento;
-import br.com.passos.estacionamento.service.EstacionamentoService;
+import br.com.passos.estacionamento.model.Transaction;
+import br.com.passos.estacionamento.service.TransactionService;
 
 @RestController
-@RequestMapping("/estacionamento")
-public class EstacionamentoController {
+@RequestMapping("/transaction")
+public class TransactionController {
 
     @Autowired
-    private EstacionamentoService estacionamentoService;
+    private TransactionService transactionService;
 
     @PostMapping
-    public ResponseEntity<Void> adicionar(@RequestBody Estacionamento estacionamento){
-        estacionamentoService.adicionar(estacionamento);
+    public ResponseEntity<Void> createTransaction(@RequestBody Transaction transaction){
+        transactionService.createTransaction(transaction);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     

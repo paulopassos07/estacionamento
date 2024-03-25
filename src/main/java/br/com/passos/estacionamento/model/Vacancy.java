@@ -1,4 +1,4 @@
-package br.com.passos.estacionamento.domain;
+package br.com.passos.estacionamento.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,21 +15,19 @@ import lombok.Setter;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "tb_vaga")
-public class Vaga {
+public class Vacancy {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer numero;
+    private Integer number;
 
-    private boolean ativa;
+    private boolean active;
 
-
-    public Vaga(Integer numero, boolean ativa) {
-        this.numero = numero;
-        this.ativa = ativa;
+    public Vacancy(Integer number, boolean active) {
+        this.number = number;
+        this.active = active;
     }
 
 }

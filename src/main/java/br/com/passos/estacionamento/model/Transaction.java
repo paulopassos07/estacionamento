@@ -1,4 +1,4 @@
-package br.com.passos.estacionamento.domain;
+package br.com.passos.estacionamento.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,23 +14,22 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "tb_estacionamento")
-public class Estacionamento {
+public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    private Vaga vaga;
+    private Vacancy vacancy;
 
     @OneToOne
-    private Veiculo veiculo;
+    private Vehicle vehicle;
 
-    private LocalDateTime dataEntrada;
+    private LocalDateTime dateInput;
 
-    private LocalDateTime dataSaida;
+    private LocalDateTime dateOutput;
 
-    private Double valorHora;
+    private Double valueHour;
     
 }
